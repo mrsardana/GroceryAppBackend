@@ -1,0 +1,494 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Grocery App",
+        "description": "Grocery App",
+        "license": {}
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Category",
+            "description": "Category API"
+        },
+        {
+            "name": "Products",
+            "description": "Products API"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get all Category",
+                "parameters": [
+                    {
+                        "name": "categoryName",
+                        "in": "query",
+                        "required": false,
+                        "description": "Category Name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "description": "Page Number",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "description": "Page Size",
+                        "type": "integer",
+                        "default": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create Category API",
+                "parameters": [
+                    {
+                        "name": "categoryName",
+                        "in": "formData",
+                        "description": "Category Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "categoryDescription",
+                        "in": "formData",
+                        "description": "Category Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "categoryImage",
+                        "in": "formData",
+                        "description": "Category Image",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/category/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Category Id",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Category Details based on Category Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update Category API",
+                "parameters": [
+                    {
+                        "name": "categoryName",
+                        "in": "formData",
+                        "description": "Category Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "categoryDescription",
+                        "in": "formData",
+                        "description": "Category Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "categoryImage",
+                        "in": "formData",
+                        "description": "Category Image",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Category API",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/product": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all Products",
+                "parameters": [
+                    {
+                        "name": "productName",
+                        "in": "query",
+                        "required": false,
+                        "description": "Search by Product Name",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse2"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create Product API",
+                "parameters": [
+                    {
+                        "name": "productName",
+                        "in": "formData",
+                        "description": "Product Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "formData",
+                        "description": "Product Category",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productShortDescription",
+                        "in": "formData",
+                        "description": "Product Short Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productDescription",
+                        "in": "formData",
+                        "description": "Product Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productPrice",
+                        "in": "formData",
+                        "description": "Product Price",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productSalePrice",
+                        "in": "formData",
+                        "description": "Product Sale Price",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productSKU",
+                        "in": "formData",
+                        "description": "Product SKU",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productType",
+                        "in": "formData",
+                        "description": "Product Type",
+                        "type": "string"
+                    },
+                    {
+                        "name": "stockStatus",
+                        "in": "formData",
+                        "description": "Product Stock Status",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productImage",
+                        "in": "formData",
+                        "description": "Product Image",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse2"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/product/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "Product Id",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Product Details based on Product Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse2"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update Product API",
+                "parameters": [
+                    {
+                        "name": "productName",
+                        "in": "formData",
+                        "description": "Product Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "formData",
+                        "description": "Product Category",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productShortDescription",
+                        "in": "formData",
+                        "description": "Product Short Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productDescription",
+                        "in": "formData",
+                        "description": "Product Description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productPrice",
+                        "in": "formData",
+                        "description": "Product Price",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productSalePrice",
+                        "in": "formData",
+                        "description": "Product Sale Price",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productSKU",
+                        "in": "formData",
+                        "description": "Product SKU",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productType",
+                        "in": "formData",
+                        "description": "Product Type",
+                        "type": "string"
+                    },
+                    {
+                        "name": "stockStatus",
+                        "in": "formData",
+                        "description": "Product Stock Status",
+                        "type": "string"
+                    },
+                    {
+                        "name": "productImage",
+                        "in": "formData",
+                        "description": "Product Image",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse2"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete Product API",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceResponse2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Category": {
+            "required": [
+                "categoryName",
+                "_id"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "categoryDescription": {
+                    "type": "string"
+                },
+                "categoryImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "Products": {
+            "required": [
+                "_id",
+                "productName",
+                "category",
+                "productPrice",
+                "productType"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "productShortDescription": {
+                    "type": "string"
+                },
+                "productDescription": {
+                    "type": "string"
+                },
+                "productPrice": {
+                    "type": "string"
+                },
+                "productSalePrice": {
+                    "type": "string"
+                },
+                "productSKU": {
+                    "type": "string"
+                },
+                "productType": {
+                    "type": "string"
+                },
+                "stockStatus": {
+                    "type": "string"
+                },
+                "productImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "ServiceResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Category"
+                    }
+                }
+            }
+        },
+        "ServiceResponse2": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Products"
+                    }
+                }
+            }
+        }
+    }
+}
