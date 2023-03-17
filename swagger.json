@@ -16,6 +16,10 @@
         {
             "name": "Products",
             "description": "Products API"
+        },
+        {
+            "name": "Users",
+            "description": "Users API"
         }
     ],
     "schemes": [
@@ -28,6 +32,62 @@
         "application/json"
     ],
     "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Register API",
+                "parameters": [
+                    {
+                        "name": "RegisterModel",
+                        "in": "body",
+                        "description": "User Registration",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login API",
+                "parameters": [
+                    {
+                        "name": "LoginModel",
+                        "in": "body",
+                        "description": "User Login API",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/LoginModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/LoginModel"
+                        }
+                    }
+                }
+            }
+        },
         "/api/category": {
             "get": {
                 "tags": [
@@ -487,6 +547,46 @@
                     "items": {
                         "$ref": "#/definitions/Products"
                     }
+                }
+            }
+        },
+        "RegisterModel": {
+            "required": [
+                "fullName",
+                "email",
+                "password",
+                "address",
+                "phone"
+            ],
+            "properties": {
+                "fullName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "LoginModel": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         }
