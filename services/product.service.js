@@ -55,9 +55,16 @@ async function getProducts(params, callback) {
         .find(condition, "productName productShortDescription productDescription productPrice productSalePrice productImage productSKU productType stockStatus createdAt updatedAt")
         .sort(params.sort)
         .populate("category", "categoryName categoryImage")
+        // .populate("relatedProducts", "relatedProduct")
         .limit(perPage)
         .skip(perPage * page)
         .then((response) => {
+            // var res = response.map(r => {
+            //     if (r.relatedProducts.length > 0) {
+            //         r.relatedProducts = r.relatedProducts.map(x => x.relatedProduct);
+            //         return r;
+            //     }
+            // })
             return callback(null, response);
         })
         .catch((error) => {
