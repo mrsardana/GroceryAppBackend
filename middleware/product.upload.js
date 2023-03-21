@@ -1,16 +1,18 @@
 const multer = require("multer");
 const Path = require("path");
 
-const storage = multer.diskStorage(
-    {
-        destination: function (req, file, cb) {
-            cb(null, "./uploads/products");
-        },
-        filename: function (req, file, cb) {
-            cb(null, Date.now() + "-" + file.originalname);
-        }
-    }
-);
+// const storage = multer.diskStorage(
+//     {
+//         destination: function (req, file, cb) {
+//             cb(null, "./uploads/products");
+//         },
+//         filename: function (req, file, cb) {
+//             cb(null, Date.now() + "-" + file.originalname);
+//         }
+//     }
+// );
+
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, callback) => {
     const validExt = [".png", ".jpg", ".jpeg"];

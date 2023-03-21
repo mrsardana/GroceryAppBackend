@@ -1,14 +1,15 @@
 const multer = require("multer");
 const Path = require("path");
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "./uploads/categories")
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname)
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, "./uploads/categories")
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, Date.now() + "-" + file.originalname)
+//     }
+// });
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, callback) => {
     const acceptableExt = [".png", ".jpg", ".jpeg"];
@@ -28,7 +29,7 @@ const fileFilter = (req, file, callback) => {
 let upload = multer({
     storage: storage,
     fileFilter: fileFilter,
-    fileSize: 1048576,
+    fileSize: 10485760,
 });
 
 module.exports = upload.single("categoryImage");
