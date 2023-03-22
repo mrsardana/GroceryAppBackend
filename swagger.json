@@ -6,7 +6,7 @@
         "description": "Grocery App",
         "license": {}
     },
-    "host": "https://grocery-shopping-app.herokuapp.com/",
+    "host": "grocery-shopping-app.herokuapp.com",
     "basePath": "/",
     "tags": [
         {
