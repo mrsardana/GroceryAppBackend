@@ -1,6 +1,5 @@
 const dotenv = require('dotenv');
 dotenv.config();
-console.log("app.config" + process.env.URL)
 const MONGO_DB_CONFIG = {
     // DB: "mongodb://127.0.0.1:27017/grocery-app-db",
     DB: process.env.URL,
