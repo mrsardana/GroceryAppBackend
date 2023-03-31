@@ -30,6 +30,6 @@ app.use("/api", require("./routes/app.routes"))
 app.use(errors.errorHandler);
 app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(process.env.port || 4000, function () {
+app.listen(process.env.PORT || 4000, function () {
     console.log("Ready to Go")
 });
