@@ -1,5 +1,6 @@
 const userServices = require("../services/users.service");
 const cartService = require('../services/cart.service');
+const favService = require('../services/fav.service');
 
 exports.register = (req, res, next) => {
     userServices.register(req.body, (error, results) => {
@@ -14,6 +15,9 @@ exports.register = (req, res, next) => {
 
             cartService.addCart(model, (error, results) => {
             });
+            favService.addFav(model, (error, results) => {
+            });
+
             return res.status(200).send({
                 message: "Success",
                 data: results
