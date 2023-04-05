@@ -6,7 +6,7 @@
         "description": "Grocery App",
         "license": {}
     },
-    "host": "localhost:4000",
+    "host": "grocery-shopping-app.herokuapp.com/",
     "basePath": "/",
     "tags": [
         {
@@ -23,7 +23,7 @@
         }
     ],
     "schemes": [
-        "http"
+        "https"
     ],
     "consumes": [
         "application/json"
