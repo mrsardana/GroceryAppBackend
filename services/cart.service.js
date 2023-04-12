@@ -113,6 +113,17 @@ async function removeCartItem(params, callback) {
                 }
             }
         }
+        else if (params.qty == "empty_cart") {
+            cartDB.products.splice(0);
+            cartDB
+                .save()
+                .then(
+                    callback(null, "Cart Updated")
+                )
+                .catch((error) => {
+                    return callback(error);
+                });
+        }
         // }
     });
 }
